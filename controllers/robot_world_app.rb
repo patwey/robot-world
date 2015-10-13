@@ -1,0 +1,2 @@
+class RobotWorldApp
+end
