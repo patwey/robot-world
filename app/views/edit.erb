@@ -1,0 +1,33 @@
+<h1>Reprogram <%= @robot.name %></h1>
+
+<form action='/robots/<%= @robot.id %>' method='post'>
+  <!--
+  name
+  city
+  state
+  avatar
+  birthdate
+  date hired
+  department
+  -->
+  <input type="hidden" name="_method" value="put" />
+  <label for="robotName">Name</label>
+  <input type='text' name='robot[name]' value="<%= @robot.name %>" /><br/>
+
+  <label for="robotCity">City</label>
+  <input type='text' name='robot[city]' value="<%= @robot.city %>" /><br/>
+
+  <label for="robotState">State</label>
+  <input type='text' name='robot[state]' value="<%= @robot.state %>" /><br/>
+  <!-- avatar --><p>Avatar Input</p>
+  <label for="robotBirthdate">Birthdate</label>
+  <input type='text' name='robot[birthdate]' value="<%= @robot.birthdate %>" /><br/>
+
+  <label for="robotDateHired">Date Hired</label>
+  <input type='text' name='robot[date_hired]' value="<%= @robot.date_hired %>" /><br/>
+
+  <label for="robotDepartement">Department</label>
+  <input type='text' name='robot[department]' value="<%= @robot.department %>" /><br/>
+  <br/>
+  <input type='submit' value='submit' />
+</form>
