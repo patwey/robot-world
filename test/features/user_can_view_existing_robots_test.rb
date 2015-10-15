@@ -7,9 +7,9 @@ class ViewRobotsTest < FeatureTest
     build_new(3)
     visit '/robots'
     assert_equal '/robots', current_path
-    assert has_css?('ul')
+    assert has_css?('.robot-index')
 
-    within('ul') do
+    within('.robot-index') do
       assert has_css?('#robot-1')
       assert has_css?('#robot-2')
       assert has_css?('#robot-3')
@@ -22,9 +22,9 @@ class ViewRobotsTest < FeatureTest
     build_new(1)
     visit '/robots'
     assert_equal '/robots', current_path
-    assert has_css?('ul')
+    assert has_css?('.robot-index')
 
-    within('ul') do
+    within('.robot-index') do
       assert has_css?('#robot-1')
       click_link('name 1')
     end

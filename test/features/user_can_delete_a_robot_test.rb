@@ -14,7 +14,7 @@ class DeleteRobotTest < FeatureTest
       click_button('Unplug')
     end
 
-    within('ul') do
+    within('.robot-index') do
       refute has_css?('li')
     end
   end
