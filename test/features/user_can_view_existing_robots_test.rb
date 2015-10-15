@@ -2,10 +2,16 @@ require_relative '../test_helper'
 
 class ViewRobotsTest < FeatureTest
   def test_user_can_view_all_robots
-  # As a user, when I navigate to the robots index, then I can see all the
-  # existing robots.
+  # As a user, when I navigate to the homepage, and I click the Meet the Robots
+  # button, then I can see all the existing robots.
     build_new(3)
-    visit '/robots'
+    visit '/'
+    assert_equal '/', current_path
+
+    within('#robots-index-btn') do
+      click_link('Meet the Robots')
+    end
+
     assert_equal '/robots', current_path
     assert has_css?('.robot-index')
 
