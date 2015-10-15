@@ -4,5 +4,52 @@
   <ul>
     <li><a href="/robots">Meet the Robots</a></li>
     <li><a href="/robots/new">Create a Robot</a></li>
+  </ul>
+
+  <br />
+
+  <h2>Statistics</h2>
+
+  <h4>Average Age:</h4>
+  <ul><li><%= @stats[:avg_age] %></li></ul>
+
+  <h4>Robots Hired By Year:</h4>
   <ul>
+  <% @stats[:years_hired].each do |year, count| %>
+    <li><%= year %>: <%= count %></li>
+  <% end %>
+  </ul>
+
+  <h4>Robots By Department:</h4>
+  <ul>
+  <% @stats[:departments].each do |dept, count| %>
+    <li><%= dept %>: <%= count %></li>
+  <% end %>
+  </ul>
+
+  <h4>Robots By City:</h4>
+  <ul>
+  <% @stats[:cities].each do |city, count| %>
+    <li><%= city %>: <%= count %></li>
+  <% end %>
+  </ul>
+
+  <h4>Robots By State:</h4>
+  <ul>
+  <% @stats[:states].each do |state, count| %>
+    <li><%= state %>: <%= count %></li>
+  <% end %>
+  </ul>
 </div>
+
+
+<!--
+@stats:
+{
+ :avg_age=>19,
+ :years_hired=>{2015=>1, 1989=>1},
+ :departments=>{"akldnal"=>1, "Electronics"=>1},
+ :cities=>{"Pittsburgh"=>1, "Denver"=>1},
+ :states=>{"PA"=>1, "CO"=>1}
+}
+-->
