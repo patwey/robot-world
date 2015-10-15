@@ -1,3 +1,10 @@
 ---
-robots: []
-total: 8
+robots:
+- id: 10
+  name: Pat
+  city: Pittsburgh
+  state: PA
+  birthdate: 3/21/91
+  date_hired: 10/14/15
+  department: akldnal
+total: 10
