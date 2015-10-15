@@ -9,34 +9,56 @@
   <h2>Statistics</h2>
 
   <h4>Average Age:</h4>
-  <ul><li><%= @stats[:avg_age] %></li></ul>
+  <ul>
+    <% if @stats[:avg_age].nil? %>
+      <li>None</li>
+    <% else %>
+      <li><%= @stats[:avg_age] %></li>
+    <% end %>
+  </ul>
 
   <h4>Robots Hired By Year:</h4>
   <ul>
-  <% @stats[:years_hired].each do |year, count| %>
-    <li><%= year %>: <%= count %></li>
-  <% end %>
+    <% if @stats[:years_hired].empty? %>
+      <li>None</li>
+    <% else %>
+      <% @stats[:years_hired].each do |year, count| %>
+        <li><%= year %>: <%= count %></li>
+      <% end %>
+    <% end %>
   </ul>
 
   <h4>Robots By Department:</h4>
   <ul>
-  <% @stats[:departments].each do |dept, count| %>
-    <li><%= dept %>: <%= count %></li>
-  <% end %>
+    <% if @stats[:departments].empty? %>
+      <li>None</li>
+    <% else %>
+      <% @stats[:departments].each do |dept, count| %>
+        <li><%= dept %>: <%= count %></li>
+      <% end %>
+    <% end %>
   </ul>
 
   <h4>Robots By City:</h4>
   <ul>
-  <% @stats[:cities].each do |city, count| %>
-    <li><%= city %>: <%= count %></li>
-  <% end %>
+    <% if @stats[:cities].empty? %>
+      <li>None</li>
+    <% else %>
+      <% @stats[:cities].each do |city, count| %>
+        <li><%= city %>: <%= count %></li>
+      <% end %>
+    <% end %>
   </ul>
 
   <h4>Robots By State:</h4>
   <ul>
-  <% @stats[:states].each do |state, count| %>
-    <li><%= state %>: <%= count %></li>
-  <% end %>
+    <% if @stats[:states].empty? %>
+      <li>None</li>
+    <% else %>
+      <% @stats[:states].each do |state, count| %>
+        <li><%= state %>: <%= count %></li>
+      <% end %>
+    <% end %>
   </ul>
 </div>
 

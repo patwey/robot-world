@@ -25,7 +25,7 @@ class RobotWorld
   end
 
   def self.statistics
-    stats = {:avg_age     => 'None',
+    stats = {:avg_age     => nil,
              :years_hired => {},
              :departments => {},
              :cities      => {},
