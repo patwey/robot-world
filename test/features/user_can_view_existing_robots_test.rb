@@ -1,15 +1,6 @@
 require_relative '../test_helper'
 
 class ViewRobotsTest < FeatureTest
-  def build_new(num)
-    num.times { RobotWorld.build({ 'name'       => "name #{num}",
-                                   'city'       => "city #{num}",
-                                   'state'      => "state #{num}",
-                                   'avatar'     => "avatar #{num}",
-                                   'birthdate'  => "birthdate #{num}",
-                                   'date_hired' => "date_hired #{num}",
-                                   'department' => "department #{num}"}) }
-  end
   def test_user_can_view_all_robots
   # As a user, when I navigate to the robots index, then I can see all the
   # existing robots.

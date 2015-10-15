@@ -1,16 +1,6 @@
 require_relative '../test_helper'
 
 class UpdateRobotTest < FeatureTest
-  def build_new(num)
-    num.times { RobotWorld.build({ 'name'       => "name #{num}",
-                                   'city'       => "city #{num}",
-                                   'state'      => "state #{num}",
-                                   'avatar'     => "avatar #{num}",
-                                   'birthdate'  => "birthdate #{num}",
-                                   'date_hired' => "date_hired #{num}",
-                                   'department' => "department #{num}"}) }
-  end
-
   def test_user_can_view_update_robot_form
   # As a user, when I navigate to the robots index page, and I click on a
   # reprogram button, then I see an update page with that robots information
