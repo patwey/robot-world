@@ -4,7 +4,22 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
   </head>
   <body>
-    <!-- navbar -->
+    <div class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <span class="navbar-brand">Robot World</span>
+          </div>
+          <div>
+            <ul class="nav navbar-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/robots">Robots</a></li>
+              <li><a href="/robots/new">Build a Robot</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
     <%= yield %>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

@@ -1,8 +1,7 @@
 <div class='container'>
   <h1>Robots</h1>
 
-  <ul>
-
+  <ul class='robot-index'>
     <% @robots.each do |robot| %>
       <li>
         <a href="/robots/<%= robot.id %>" id="robot-<%= robot.id %>"><%= robot.name %></a>
