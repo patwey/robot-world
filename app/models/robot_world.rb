@@ -25,8 +25,13 @@ class RobotWorld
   end
 
   def self.statistics
-    stats = {}
+    stats = {:avg_age     => 'None',
+             :years_hired => {},
+             :departments => {},
+             :cities      => {},
+             :states      => {}}
     robots = all
+    return stats if robots.empty?
 
     # average robot age
     birthdates = robots.map { |robot| robot.birthdate }
