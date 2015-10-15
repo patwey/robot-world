@@ -5,7 +5,7 @@
 
     <% @robots.each do |robot| %>
       <li>
-        <a href="/robots/<%= robot.id %>"><%= robot.name %></a>
+        <a href="/robots/<%= robot.id %>" id="robot-<%= robot.id %>"><%= robot.name %></a>
         <a href="/robots/<%= robot.id %>/reprogram">Reprogram</a>
         <form action="/robots/<%= robot.id %>" method="post">
           <input type="hidden" name="_method" value="delete" />
