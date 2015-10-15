@@ -11,12 +11,12 @@ class BuildRobotTest < FeatureTest
     assert_equal '/robots/new', current_path
 
     within('form') do
-      assert has_css?('#robotName')
-      assert has_css?('#robotCity')
-      assert has_css?('#robotState')
-      assert has_css?('#robotBirthdate')
-      assert has_css?('#robotDateHired')
-      assert has_css?('#robotDepartment')
+      assert has_css?('.robot-name')
+      assert has_css?('.robot-city')
+      assert has_css?('.robot-state')
+      assert has_css?('.robot-birthdate')
+      assert has_css?('.robot-date-hired')
+      assert has_css?('.robot-department')
       assert has_button?('Submit')
     end
   end
@@ -36,7 +36,7 @@ class BuildRobotTest < FeatureTest
       fill_in('robot[department]', with: 'Maintenance')
       click_button('Submit')
     end
-    
+
     assert_equal '/robots', current_path
   end
 end
