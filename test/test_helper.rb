@@ -5,11 +5,27 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'tilt/erb'
 
+DatabaseCleaner[:sequel, { :connection => Sequel.sqlite('db/robot_world_test.sqlite3') }].strategy = :truncation
+
 class Minitest::Test
-# add on to minitest::test so everything that inherits it can use the
-# teardown behavior
+  def setup
+    DatabaseCleaner.start
+  end
+
   def teardown
-    RobotWorld.delete_all
+    DatabaseCleaner.clean
+  end
+
+  def build_new(num)
+    num.times do |n|
+      RobotWorld.build({ :name       => "name #{n+1}",
+                         :city       => "city #{n+1}",
+                         :state      => "state #{n+1}",
+                         :avatar     => "avatar #{n+1}",
+                         :birthdate  => "birthdate #{n+1}",
+                         :date_hired => "date_hired #{n+1}",
+                         :department => "department #{n+1}"})
+    end
   end
 end
 
@@ -17,14 +33,4 @@ Capybara.app = RobotWorldApp
 
 class FeatureTest < Minitest::Test
   include Capybara::DSL
-
-  def build_new(num)
-    num.times { RobotWorld.build({ 'name'       => "name #{num}",
-                                   'city'       => "city #{num}",
-                                   'state'      => "state #{num}",
-                                   'avatar'     => "avatar #{num}",
-                                   'birthdate'  => "birthdate #{num}",
-                                   'date_hired' => "date_hired #{num}",
-                                   'department' => "department #{num}"}) }
-  end
 end
