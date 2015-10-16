@@ -6,12 +6,14 @@ class UpdateRobotTest < FeatureTest
   # reprogram button, then I see an update page with that robots information
   # filled into the inputs.
     build_new(1)
+    robot = RobotWorld.all.first
+
     visit '/robots'
     assert_equal '/robots', current_path
 
     assert has_link?('Reprogram')
     click_link('Reprogram')
-    assert_equal '/robots/1/reprogram', current_path
+    assert_equal "/robots/#{robot.id}/reprogram", current_path
 
     within('form') do
       assert has_css?('.robot-name')
@@ -40,8 +42,9 @@ class UpdateRobotTest < FeatureTest
   # As a user, when I navigate to the update robot form, and I fill out the
   # updated information, and I click submit, then the robot is updated.
     build_new(1)
-    visit '/robots/1/reprogram'
-    assert_equal '/robots/1/reprogram', current_path
+    robot = RobotWorld.all.first
+    visit "/robots/#{robot.id}/reprogram"
+    assert_equal "/robots/#{robot.id}/reprogram", current_path
 
     within('form') do
       fill_in('robot[name]', with: 'Mr. Robot')

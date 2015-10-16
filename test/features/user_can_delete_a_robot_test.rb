@@ -5,9 +5,11 @@ class DeleteRobotTest < FeatureTest
   # As a user, when I navigate to the robots index, and I click on an unplug
   # button, then the corresponding robot will be deleted.
     build_new(1)
+    robot = RobotWorld.all.first
 
     visit '/robots'
     assert_equal '/robots', current_path
+    assert has_css?("#robot-#{robot.id}")
 
     within('form') do
       assert has_button?('Unplug')
@@ -15,7 +17,7 @@ class DeleteRobotTest < FeatureTest
     end
 
     within('.robot-index') do
-      refute has_css?('li')
+      refute has_css?("#robot-#{robot.id}")
     end
   end
 end
