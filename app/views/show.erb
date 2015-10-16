@@ -1,11 +1,13 @@
 <div class='container'>
   <h1><%= @robot.name %></h1>
-  <ul>
-    <li>City: <%= @robot.city %></li>
-    <li>State: <%= @robot.state %></li>
+  <img class="img-rounded" src="https://robohash.org/<%= @robot.name %>.png"
+       height="200" width="200">
+  <ul class='list-group'>
+    <li class='list-group-item'>City: <%= @robot.city %></li>
+    <li class='list-group-item'>State: <%= @robot.state %></li>
     <!-- avatar -->
-    <li>Birthdate: <%= @robot.birthdate %></li>
-    <li>Date Hired: <%= @robot.date_hired %></li>
-    <li>Department: <%= @robot.department %></li>
+    <li class='list-group-item'>Birthdate: <%= @robot.birthdate %></li>
+    <li class='list-group-item'>Date Hired: <%= @robot.date_hired %></li>
+    <li class='list-group-item'>Department: <%= @robot.department %></li>
   </ul>
 </div>

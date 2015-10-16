@@ -1,6 +1,7 @@
 <div class='container'>
   <h1>Reprogram <%= @robot.name %></h1>
-
+  <img class="img-rounded" src="https://robohash.org/<%= @robot.name %>.png"
+       height="200" width="200">
   <form action='/robots/<%= @robot.id %>' method='post'>
     <!--
     name
