@@ -34,7 +34,7 @@ class RobotWorld
   end
 
   def self.statistics
-    return 'Build a robot to view stats!' if table.empty?
+    return {} if table.empty?
     stats_for({ :avg_age     => :birthdate,
                 :years_hired => :date_hired,
                 :departments => :department,
