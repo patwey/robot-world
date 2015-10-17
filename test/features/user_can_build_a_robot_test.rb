@@ -7,7 +7,9 @@ class BuildRobotTest < FeatureTest
     visit '/'
     assert_equal '/', current_path
 
-    click_link('Create a Robot')
+    within('.landing') do
+      click_link('Build a Robot')
+    end
     assert_equal '/robots/new', current_path
 
     within('form') do
