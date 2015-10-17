@@ -10,9 +10,7 @@ class ViewRobotsTest < FeatureTest
     visit '/'
     assert_equal '/', current_path
 
-    within('#robots-index-btn') do
-      click_link('Meet the Robots')
-    end
+    click_link('Meet the Robots')
 
     assert_equal '/robots', current_path
     assert has_css?('.robot-index')
