@@ -3,7 +3,7 @@
 
   <ul class='robot-index list-group'>
     <% if @robots.empty? %>
-      <h3>Build a robot!</h3>
+      <a href="/robots/new"><h3>Build a robot!</h3></a>
     <% else %>
       <% @robots.each do |robot| %>
         <li class='list-group-item'>
