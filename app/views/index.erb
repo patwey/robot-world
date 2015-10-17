@@ -1,24 +1,25 @@
-<div class='container'>
+<div class='robot-index text-center container'>
   <h1>Robots</h1>
+  <% if @robots.empty? %>
+    <a href="/robots/new"><h3>Build a robot!</h3></a>
+  <% else %>
+    <% @robots.each do |robot| %>
+      <div class='col-md-4' min-height='200px'>
+        <img class="img-rounded" src="https://robohash.org/<%= robot.name %>.png"
+             height="200" width="200">
+          <h3><a href="/robots/<%= robot.id %>" id="robot-<%= robot.id %>"><%= robot.name %></a></h3>
 
-  <ul class='robot-index list-group'>
-    <% if @robots.empty? %>
-      <a href="/robots/new"><h3>Build a robot!</h3></a>
-    <% else %>
-      <% @robots.each do |robot| %>
-        <li class='list-group-item'>
-          <img class="img-rounded" src="https://robohash.org/<%= robot.name %>.png"
-               height="200" width="200">
-          <div class="container">
-            <h3><a href="/robots/<%= robot.id %>" id="robot-<%= robot.id %>"><%= robot.name %></a></h3>
-            <a href="/robots/<%= robot.id %>/reprogram">Reprogram</a>
+          <div class="row">
+            <a class='btn btn-warning' href="/robots/<%= robot.id %>/reprogram">Reprogram</a>
+          </div>
+          <br/>
+          <div class="row">
             <form action="/robots/<%= robot.id %>" method="post">
               <input type="hidden" name="_method" value="delete" />
-              <input type="submit" value="Unplug" />
+              <input class='btn btn-danger' type="submit" value="Unplug" />
             </form>
           </div>
-        </li>
-      <% end %>
+      </div>
     <% end %>
-  </ul>
+  <% end %>
 </div>

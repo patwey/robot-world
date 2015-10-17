@@ -1,66 +1,67 @@
 <div class='landing container'>
-  <h1>Welcome to Robot World</h1>
-  <div class='container'>
-    <a href="/robots">Meet the Robots</a>
+  <div class='text-center'>
+    <h1>Welcome to Robot World</h1>
+      <div class='row'>
+        <a class='btn btn-primary' href="/robots">Meet the Robots</a>
+        <a class='btn btn-success' href="/robots/new">Build a Robot</a>
+      </div>
   </div>
-  <div class='container'>
-    <a href="/robots/new">Build a Robot</a>
-  </div>
-  <div id="robot-statistics">
-    <h2>Statistics</h2>
-    <div class="well">
+  <div class='col-md-12' id="robot-statistics">
+    <h2>Our Robots</h2>
+    <div class="container">
     <% if @stats.empty? %>
       <h3><a href="/robots/new">Build a robot</a> to view statistics!<h3>
     <% else %>
-        <h4>Average Age:</h4>
-        <ul id="robots-avg-age">
+      <div class="col-md-4">
+        <h3>Average Age</h3>
+        <ul class="list-group" min-height="200" id="robots-avg-age">
           <% if @stats[:avg_age].nil? %>
-            <li>None</li>
+            <li class='list-group-item'>None</li>
           <% else %>
-            <li><%= @stats[:avg_age] %></li>
+            <li class='list-group-item'><%= @stats[:avg_age] %></li>
           <% end %>
         </ul> <!-- end #robots-avg-age -->
 
-        <h4>Robots Hired By Year:</h4>
-        <ul id="robots-years-hired">
+        <h3>Robots Hired By Year</h3>
+        <ul class="list-group" min-height="200" id="robots-years-hired">
           <% if @stats[:years_hired].empty? %>
-            <li>None</li>
+            <li class='list-group-item'>None</li>
           <% else %>
             <% @stats[:years_hired].each do |year, count| %>
-              <li><%= year %>: <%= count %></li>
+              <li class='list-group-item'><span class="badge"><%= count %></span><%= year %></li>
             <% end %>
           <% end %>
         </ul> <!-- end #robots-years-hired -->
 
-        <h4>Robots By Department:</h4>
-        <ul id="robots-by-department">
+        <h3>Robots By Department</h3>
+        <ul class="list-group" min-height="200" id="robots-by-department">
           <% if @stats[:departments].empty? %>
-            <li>None</li>
+            <li class='list-group-item'>None</li>
           <% else %>
             <% @stats[:departments].each do |dept, count| %>
-              <li><%= dept %>: <%= count %></li>
+              <li class='list-group-item'><span class="badge"><%= count %></span><%= dept %></li>
             <% end %>
           <% end %>
         </ul> <!-- end #robots-by-department -->
 
-        <h4>Robots By City:</h4>
-        <ul id="robots-by-city">
+        <h3>Robots By City</h3>
+        <ul class="list-group" min-height="200" id="robots-by-city">
           <% if @stats[:cities].empty? %>
-            <li>None</li>
+            <li class='list-group-item'>None</li>
           <% else %>
             <% @stats[:cities].each do |city, count| %>
-              <li><%= city %>: <%= count %></li>
+              <li class='list-group-item'><span class="badge"><%= count %></span><%= city %></li>
             <% end %>
           <% end %>
         </ul> <!-- end #robots-by-city -->
 
-        <h4>Robots By State:</h4>
-        <ul id="robots-by-state">
+        <h3>Robots By State</h3>
+        <ul class="list-group" min-height="200" id="robots-by-state">
           <% if @stats[:states].empty? %>
-            <li>None</li>
+            <li class='list-group-item'>None</li>
           <% else %>
             <% @stats[:states].each do |state, count| %>
-              <li><%= state %>: <%= count %></li>
+              <li class='list-group-item'><span class="badge"><%= count %></span><%= state %></li>
             <% end %>
           <% end %>
         </ul> <!-- end #robots-by-state -->
@@ -68,15 +69,3 @@
     <% end %>
   </div> <!-- end #robot-statistics -->
 </div> <!-- end container -->
-
-
-<!--
-@stats:
-{
- :avg_age=>19,
- :years_hired=>{2015=>1, 1989=>1},
- :departments=>{"akldnal"=>1, "Electronics"=>1},
- :cities=>{"Pittsburgh"=>1, "Denver"=>1},
- :states=>{"PA"=>1, "CO"=>1}
-}
--->

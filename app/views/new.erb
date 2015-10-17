@@ -1,25 +1,27 @@
 <div class='container'>
   <h1>Build a Robot</h1>
 
-  <form action='/robots' method='post'>
-    <label for="robotName">Name</label>
-    <input type='text' name='robot[name]' class='robot-name' /><br/>
+  <div class='form-group col-md-4 container'>
+    <form action='/robots' method='post'>
+      <label for="robotName">Name</label>
+      <input type='text' name='robot[name]' class='form-control robot-name' /><br/>
 
-    <label for="robotCity">City</label>
-    <input type='text' name='robot[city]' class='robot-city' /><br/>
+      <label for="robotCity">City</label>
+      <input type='text' name='robot[city]' class='form-control robot-city' /><br/>
 
-    <label for="robotState">State</label>
-    <input type='text' name='robot[state]' class='robot-state' /><br/>
+      <label for="robotState">State</label>
+      <input type='text' name='robot[state]' class='form-control robot-state' /><br/>
 
-    <label for="robotBirthdate">Birthdate</label>
-    <input type='text' name='robot[birthdate]' class='robot-birthdate' /><br/>
+      <label for="robotBirthdate">Birthdate</label>
+      <input type='text' name='robot[birthdate]' class='form-control robot-birthdate' /><br/>
 
-    <label for="robotDateHired">Date Hired</label>
-    <input type='text' name='robot[date_hired]' class='robot-date-hired' /><br/>
+      <label for="robotDateHired">Date Hired</label>
+      <input type='text' name='robot[date_hired]' class='form-control robot-date-hired' /><br/>
 
-    <label for="robotDepartement">Department</label>
-    <input type='text' name='robot[department]' class='robot-department' /><br/>
-    <br/>
-    <input type='submit' value='Submit' />
-  </form>
+      <label for="robotDepartement">Department</label>
+      <input type='text' name='robot[department]' class='form-control robot-department' /><br/>
+      
+      <input class='btn btn-warning' type='submit' value='Submit' />
+    </form>
+  </div>
 </div>
