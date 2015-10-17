@@ -1,12 +1,12 @@
 class Robot
-  attr_reader :id,
-              :name,
-              :city,
-              :state,
-              :avatar,
-              :birthdate,
-              :date_hired,
-              :department
+  attr_accessor :id,
+                :name,
+                :city,
+                :state,
+                :avatar,
+                :birthdate,
+                :date_hired,
+                :department
 
   def initialize(data)
     @id         = data[:id]

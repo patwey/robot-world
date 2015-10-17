@@ -34,61 +34,54 @@ class RobotWorld
   end
 
   def self.statistics
-    # (O_o)
-    # -||-
-    # _||_
-    stats = {:avg_age     => nil,
-             :years_hired => {},
-             :departments => {},
-             :cities      => {},
-             :states      => {}}
-    robots = all
-    return stats if robots.empty?
+    return 'Build a robot to view stats!' if table.empty?
+    stats_for({ :avg_age     => :birthdate,
+                :years_hired => :date_hired,
+                :departments => :department,
+                :cities      => :city,
+                :states      => :state })
+  end
 
-    # average robot age
-    birthdates = robots.map { |robot| robot.birthdate }
-    ages = birthdates.map {|date| Time.now.year - date.split('/').last.to_i }
-    stats[:avg_age] = ages.reduce(:+) / ages.count
-
-    # robots hired each year
-    years_hired = robots.map { |robot| robot.date_hired.split('/').last }
-    stats[:years_hired] = {}
-    years_hired.each do |year|
-      year = year.to_i
-      stats[:years_hired][year] = 0
-      robots.each do |robot|
-        stats[:years_hired][year] += 1 if year == robot.date_hired.split('/').last.to_i
-      end
-    end
-
-    # robots in each department
-    departments = robots.map { |robot| robot.department }
-    stats[:departments] = {}
-    departments.each do |dept|
-      stats[:departments][dept] = 0
-      robots.each do |robot|
-        stats[:departments][dept] += 1 if dept == robot.department
-      end
-    end
-
-    # robots in each city
-    cities = robots.map { |robot| robot.city }
-    stats[:cities] = {}
-    cities.each do |city|
-      stats[:cities][city] = 0
-      robots.each do |robot|
-        stats[:cities][city] += 1 if city == robot.city
-      end
-    end
-    # robots in each state
-    states = robots.map { |robot| robot.state }
-    stats[:states] = {}
-    states.each do |state|
-      stats[:states][state] = 0
-      robots.each do |robot|
-        stats[:states][state] += 1 if state == robot.state
+  def self.stats_for(pairs)
+    stats = {}
+    pairs.each do |stat_key, robot_attr|
+      if stat_key == :avg_age
+        now = Time.now
+        stats[stat_key] = RobotWorld.average_age(now, robot_attr)
+      else
+        stats[stat_key] = RobotWorld.num_bots_with_same(robot_attr)
       end
     end
     stats
+  end
+
+  def self.average_age(now, robot_attr)
+    this_year = now.year
+    robots = formatted_robots
+
+    ages = robots.map { |robot| this_year - robot.send(robot_attr) }
+    ages.reduce(:+) / ages.count
+  end
+
+  def self.num_bots_with_same(robot_attr)
+    robots = formatted_robots
+    stats = {}
+    data = robots.map { |robot| robot.send(robot_attr) }.uniq
+    data.each do |row|
+      stats[row] = 0
+      robots.each do |robot|
+        stats[row] += 1 if row == robot.send(robot_attr)
+      end
+    end
+    stats
+  end
+
+  def self.formatted_robots
+    robots = all
+    robots.each do |robot|
+      robot.birthdate = robot.birthdate.split('/').last.to_i
+      robot.date_hired = robot.date_hired.split('/').last.to_i
+    end
+    robots
   end
 end
