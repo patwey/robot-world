@@ -49,7 +49,7 @@ class RobotWorld
         now = Time.now
         stats[stat_key] = RobotWorld.average_age(now, robot_attr)
       else
-        stats[stat_key] = RobotWorld.num_bots_with_same(robot_attr)
+        stats[stat_key] = RobotWorld.group_robots_by(robot_attr)
       end
     end
     stats
@@ -63,7 +63,7 @@ class RobotWorld
     ages.reduce(:+) / ages.count
   end
 
-  def self.num_bots_with_same(robot_attr)
+  def self.group_robots_by(robot_attr)
     robots = formatted_robots
     stats = {}
     data = robots.map { |robot| robot.send(robot_attr) }.uniq
